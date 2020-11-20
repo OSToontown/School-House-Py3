@@ -1,3 +1,5 @@
+from direct.showbase.PythonUtil import Enum
+
 DefaultDbName = 'tt_code_redemption'
 RedeemErrors = Enum('Success, CodeDoesntExist, CodeIsInactive, CodeAlreadyRedeemed, AwardCouldntBeGiven, TooManyAttempts, SystemUnavailable, ')
 RedeemErrorStrings = {RedeemErrors.Success: 'Success',

@@ -383,7 +383,7 @@ def compileGlobalAnimList():
                 TorsoAnimDict[key][anim[0]] = file
 
         for key in list(HeadDict.keys()):
-            if string.find(key, 'd') >= 0:
+            if str.find(key, 'd') >= 0:
                 HeadAnimDict.setdefault(key, {})
                 for anim in animList:
                     file = phaseStr + HeadDict[key] + anim[1]

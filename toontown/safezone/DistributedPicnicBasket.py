@@ -13,6 +13,7 @@ from toontown.distributed import DelayDelete
 from toontown.toonbase.ToontownTimer import ToontownTimer
 from direct.task.Task import Task
 from direct.showbase import PythonUtil
+from direct.showbase.PythonUtil import Enum
 from toontown.toon import ToonDNA
 from direct.showbase import RandomNumGen
 from toontown.battle.BattleSounds import *

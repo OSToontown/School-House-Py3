@@ -1,7 +1,7 @@
 from direct.directnotify import DirectNotifyGlobal
 from panda3d.core import ConfigVariableBool
 from direct.task import Task
-from string import maketrans
+#from string import maketrans
 import pickle
 import os
 import sys
