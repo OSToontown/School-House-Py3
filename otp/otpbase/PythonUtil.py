@@ -67,7 +67,7 @@ from direct.showbase import DConfig
 ScalarTypes = (float, int, int)
 
 import builtins
-if not hasattr(__builtin__, 'enumerate'):
+if not hasattr(builtins, 'enumerate'):
     def enumerate(L):
         """Returns (0, L[0]), (1, L[1]), etc., allowing this syntax:
         for i, item in enumerate(L):
@@ -1127,10 +1127,10 @@ def _removeProfileCustomFuncs(filename):
 #
 #        def func(self=self):
 #            self.load()
-#        import __builtin__
-#        __builtin__.func = func
+#        import builtins
+#        builtins.func = func
 #        PythonUtil.startProfile(cmd='func()', filename='profileData')
-#        del __builtin__.func
+#        del builtins.func
 #
 def _profileWithoutGarbageLeak(cmd, filename):
     # The profile module isn't necessarily installed on every Python
@@ -2795,7 +2795,7 @@ try:
     pm = pdb.pm
 except:
     # we're in production, there is no pdb module. assign these to something so that the
-    # __builtin__ exports will work
+    # builtins exports will work
     # references in the code should either be if __dev__'d or asserted
     set_trace = None
     setTrace = None
@@ -4398,7 +4398,7 @@ class deprecated(object): # STYLE: do not touch -- this is a decorator, not a st
         return new_func
 
 def isClient():
-    if hasattr(__builtin__, 'simbase') and not hasattr(__builtin__, 'base'):
+    if hasattr(builtins, 'simbase') and not hasattr(builtins, 'base'):
         return False
     return True
 
