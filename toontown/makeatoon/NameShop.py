@@ -534,9 +534,8 @@ class NameShop(StateData.StateData):
     def _checkNpcNames(self, name):
 
         def match(npcName, name = name):
-            name = TextEncoder().encodeWtext(name)
-            name = string.strip(name)
-            return TextEncoder.upper(npcName) == TextEncoder.upper(name)
+            name = name.strip()
+            return npcName.upper() == name.upper()
 
         for npcId in list(NPCToons.NPCToonDict.keys()):
             npcName = NPCToons.NPCToonDict[npcId][1]
@@ -772,9 +771,9 @@ class NameShop(StateData.StateData):
         self.notify.debug('__typedAName')
         self.nameEntry['focus'] = 0
         name = self.nameEntry.get()
-        name = TextEncoder().decodeText(name)
+        name = TextEncoder().decodeText(name.encode())
         name = name.strip()
-        name = TextEncoder().encodeWtext(name)
+        name = TextEncoder().encodeWtext(name).decode()
         self.nameEntry.enterText(name)
         problem = self.nameIsValid(self.nameEntry.get())
         if problem:

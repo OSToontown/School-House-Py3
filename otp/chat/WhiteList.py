@@ -19,21 +19,21 @@ class WhiteList:
         return text
 
     def isWord(self, text):
-        text = self.cleanText(text)
+        text = self.cleanText(text).encode()
         i = bisect_left(self.words, text)
         if i == self.numWords:
             return False
         return self.words[i] == text
 
     def isPrefix(self, text):
-        text = self.cleanText(text)
+        text = self.cleanText(text).encode()
         i = bisect_left(self.words, text)
         if i == self.numWords:
             return False
         return self.words[i].startswith(text)
 
     def prefixCount(self, text):
-        text = self.cleanText(text)
+        text = self.cleanText(text).encode()
         i = bisect_left(self.words, text)
         j = i
         while j < self.numWords and self.words[j].startswith(text):
@@ -42,7 +42,7 @@ class WhiteList:
         return j - i
 
     def prefixList(self, text):
-        text = self.cleanText(text)
+        text = self.cleanText(text).encode()
         i = bisect_left(self.words, text)
         j = i
         while j < self.numWords and self.words[j].startswith(text):

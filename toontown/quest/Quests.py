@@ -18164,7 +18164,7 @@ def getNpcLocationDialog(fromNpcId, toNpcId):
 def fillInQuestNames(text, avName = None, fromNpcId = None, toNpcId = None):
     text = copy.deepcopy(text)
     if avName != None:
-        text = string.replace(text, '_avName_', avName)
+        text = str.replace(text, '_avName_', avName)
     if toNpcId:
         if toNpcId == ToonHQ:
             toNpcName = TTLocalizer.QuestsHQOfficerFillin
