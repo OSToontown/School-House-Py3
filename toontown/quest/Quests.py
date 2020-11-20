@@ -18179,10 +18179,10 @@ def fillInQuestNames(text, avName = None, fromNpcId = None, toNpcId = None):
         else:
             toNpcName = str(NPCToons.getNPCName(toNpcId))
             where, buildingName, streetDesc = getNpcLocationDialog(fromNpcId, toNpcId)
-        text = string.replace(text, '_toNpcName_', toNpcName)
-        text = string.replace(text, '_where_', where)
-        text = string.replace(text, '_buildingName_', buildingName)
-        text = string.replace(text, '_streetDesc_', streetDesc)
+        text = str.replace(text, '_toNpcName_', toNpcName)
+        text = str.replace(text, '_where_', where)
+        text = str.replace(text, '_buildingName_', buildingName)
+        text = str.replace(text, '_streetDesc_', streetDesc)
     return text
 
 

@@ -31,6 +31,7 @@ import copy
 from toontown.toonbase import TTLocalizer
 from toontown.toon import NPCToons
 from libotp import *
+import functools
 camPos = Point3(14, 0, 10)
 camHpr = Vec3(89, -30, 0)
 randomBattleTimestamp = base.config.GetBool('random-battle-timestamp', 0)
@@ -779,7 +780,7 @@ class Movie(DirectObject.DirectObject):
                 return -1
             return 0
 
-        self.toonAttackDicts.sort(compFunc)
+        self.toonAttackDicts.sort(key=functools.cmp_to_key(compFunc))
         return
 
     def __findToonAttack(self, track):
