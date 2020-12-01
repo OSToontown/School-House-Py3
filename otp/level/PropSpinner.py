@@ -22,7 +22,7 @@ class PropSpinner(Entity):
             nameParts = name.split('_')
             axis = nameParts[2]
             rate = 0
-            neg = string.upper(nameParts[3][0]) == 'N'
+            neg = str.upper(nameParts[3][0]) == 'N'
             if neg:
                 nameParts[3] = nameParts[3][1:]
             try:
