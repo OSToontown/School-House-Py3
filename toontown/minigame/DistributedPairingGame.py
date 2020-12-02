@@ -507,7 +507,7 @@ class DistributedPairingGame(DistributedMinigame):
 
     def getCardPos(self, deckOrderIndex):
         col = deckOrderIndex % self.cardsPerRow
-        row = deckOrderIndex / self.cardsPerRow
+        row = deckOrderIndex // self.cardsPerRow
         x = col * self.xCardInc
         y = row * self.yCardInc
         return (x, y)

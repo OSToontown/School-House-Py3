@@ -709,19 +709,18 @@ class DistributedCannonGame(DistributedMinigame):
             if not isClient():
                 print('EXECWARNING DistributedCannonGame: %s' % flightResults)
                 printStack()
-        for key in flightResults:
-            exec("%s = flightResults['%s']" % (key, key))
+        startPos = flightResults['startPos']
+        startHpr = flightResults['startHpr']
+        startVel = flightResults['startVel']
+        trajectory = flightResults['trajectory']
+        timeOfImpact = flightResults['timeOfImpact']
+        hitWhat = flightResults['hitWhat']
 
-        if startPos:
-            self.notify.debug('start position: ' + str(startPos))
-        if startVel:
-            self.notify.debug('start velocity: ' + str(startVel))
-        if launchTime:
-            self.notify.debug('time of launch: ' + str(launchTime))
-        if timeOfImpact:
-            self.notify.debug('time of impact: ' + str(timeOfImpact))
-        if trajectory:
-            self.notify.debug('location of impact: ' + str(trajectory.getPos(timeOfImpact)))
+        self.notify.debug('start position: ' + str(startPos))
+        self.notify.debug('start velocity: ' + str(startVel))
+        self.notify.debug('time of launch: ' + str(launchTime))
+        self.notify.debug('time of impact: ' + str(timeOfImpact))
+        self.notify.debug('location of impact: ' + str(trajectory.getPos(timeOfImpact)))
         if hitWhat == self.HIT_WATER:
             self.notify.debug('toon will land in the water')
         elif hitWhat == self.HIT_TOWER:
