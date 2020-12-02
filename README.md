@@ -1,5 +1,14 @@
+This is a stable, Python 3 version of Toontown School House, a close to stock source code for Toontown Online. Most if not all of the features are working in this port. Please use the Panda3D in the organization to run this source. You will also have to build Astron, also in the organization. 
+
+The rest of the readme will be from the original Toontown School House repository.
+
+------
+
+
+
 # Toontown-School-House
-Welcome to the Toontown School House repistory!
+
+Welcome to the Toontown School House repository!
 
 Toontown School House is a course dedicated to teaching members of the Toontown community how to develop for the game. For more information, head over to [this](https://www.reddit.com/r/Toontown/comments/doszgg/toontown_school_house_learn_to_develop_for/) Reddit post.
 
