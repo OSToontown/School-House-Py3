@@ -537,9 +537,9 @@ class DistributedPatternGame(DistributedMinigame):
         index = self.avIdList.index(avId)
         return self.__getRowPos(self.frontRowHome, self.frontRowXSpacing, index, len(self.avIdList))
 
-    def __setMinnieChat(self, str, giggle):
-        str = string.replace(str, '%s', self.getAvatar(self.localAvId).getName())
-        self.minnie.setChatAbsolute(str, CFSpeech)
+    def __setMinnieChat(self, _str, giggle):
+        _str = str.replace(_str, '%s', self.getAvatar(self.localAvId).getName())
+        self.minnie.setChatAbsolute(_str, CFSpeech)
         if giggle:
             self.minnie.playDialogue('statementA', 1)
 

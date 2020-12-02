@@ -533,8 +533,8 @@ class DistributedRaceGame(DistributedMinigame):
         self.notify.debug('in enterMoveAvatars:')
         tasks = []
         self.avatarPositionsCopy = self.avatarPositions.copy()
-        for i in range(0, len(choiceList) / self.numPlayers):
-            startIndex = i * self.numPlayers
+        for i in range(0, len(choiceList) // self.numPlayers):
+            startIndex = int(i * self.numPlayers)
             endIndex = startIndex + self.numPlayers
             self.choiceList = choiceList[startIndex:endIndex]
             self.positionList = positionList[startIndex:endIndex]

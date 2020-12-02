@@ -11,6 +11,7 @@ from toontown.minigame import DistributedIceWorld
 from toontown.minigame import IceGameGlobals
 from toontown.minigame import MinigameAvatarScorePanel
 from toontown.minigame import IceTreasure
+import functools
 
 class DistributedIceGame(DistributedMinigame.DistributedMinigame, DistributedIceWorld.DistributedIceWorld):
     notify = directNotify.newCategory('DistributedIceGame')
@@ -429,7 +430,7 @@ class DistributedIceGame(DistributedMinigame.DistributedMinigame, DistributedIce
             else:
                 return 0
 
-        sortedByDistance.sort(cmp=compareDistance)
+        sortedByDistance.sort(key=functools.cmp_to_key(compareDistance))
         self.scoreMovie = Sequence()
         curScale = 0.01
         curTime = 0
