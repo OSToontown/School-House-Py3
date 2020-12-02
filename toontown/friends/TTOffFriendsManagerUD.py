@@ -304,8 +304,6 @@ class TTOffFriendsManagerUD(DistributedObjectGlobalUD):
                 ['setPetTrickPhrases', fields['setPetTrickPhrases'][0]]
             ]
 
-        self.notify.warning(details)
-
         self.sendUpdateToAvatarId(avId, 'avatarDetailsResp', [fields['avId'], json.dumps(details)])
 
     def removeFriend(self, friendId):
