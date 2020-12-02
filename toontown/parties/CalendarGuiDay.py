@@ -9,6 +9,7 @@ from toontown.toonbase import ToontownGlobals
 from toontown.parties.PartyInfo import PartyInfo
 from toontown.parties import PartyGlobals
 from toontown.ai.NewsManager import NewsManager
+import functools
 
 def myStrftime(myTime):
     result = ''
@@ -287,7 +288,7 @@ class CalendarGuiDay(DirectFrame):
             else:
                 return 1
 
-        self.timedEvents.sort(cmp=timedEventCompare)
+        self.timedEvents.sort(key=functools.cmp_to_key(timedEventCompare))
         for timedEvent in self.timedEvents:
             if isinstance(timedEvent[1], PartyInfo):
                 self.addPartyToScrollList(timedEvent[1])
