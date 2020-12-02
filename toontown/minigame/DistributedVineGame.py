@@ -354,18 +354,22 @@ class DistributedVineGame(DistributedMinigame):
         if not (newFacingRight == 0 or newFacingRight == 1):
             self.notify.warning('invalid facingRight for %d, forcing to 1' % avId)
             newFacingRight = 1
-        if newPosX < -1000 or newPosX > 2000:
-            self.notify.warning('invalid posX for %d, forcing to 0' % avId)
-            newPosX = 0
-        if newPosZ < -100 or newPosZ > 1000:
-            self.notify.warning('invalid posZ for %d, forcing to 0' % avId)
-            newPosZ = 0
-        if newVelX < -1000 or newVelX > 1000:
-            self.notify.warning('invalid velX %s for %d, forcing to 0' % (newVelX, avId))
-            newVelX = 0
-        if newVelZ < -1000 or newVelZ > 1000:
-            self.notify.warning('invalid velZ %s for %d, forcing to 0' % (newVelZ, avId))
-            newVelZ = 0
+        if newPosX:
+            if newPosX < -1000 or newPosX > 2000:
+                self.notify.warning('invalid posX for %d, forcing to 0' % avId)
+                newPosX = 0
+        if newPosZ:
+            if newPosZ < -100 or newPosZ > 1000:
+                self.notify.warning('invalid posZ for %d, forcing to 0' % avId)
+                newPosZ = 0
+        if newVelX:
+            if newVelX < -1000 or newVelX > 1000:
+                self.notify.warning('invalid velX %s for %d, forcing to 0' % (newVelX, avId))
+                newVelX = 0
+        if newVelZ:
+            if newVelZ < -1000 or newVelZ > 1000:
+                self.notify.warning('invalid velZ %s for %d, forcing to 0' % (newVelZ, avId))
+                newVelZ = 0
         if newFallingInfo < self.FallingNot or newFallingInfo > self.FallingBat:
             self.notify.warning('invalid fallingInfo for %d, forcing to 0' % avId)
             newFallingInfo = 0

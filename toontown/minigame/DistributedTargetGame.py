@@ -42,7 +42,7 @@ def getCirclePoints(segCount, centerX, centerY, radius, wideX = 1.0, wideY = 1.0
 
 def getRingPoints(segCount, centerX, centerY, radius, thickness = 2.0, wideX = 1.0, wideY = 1.0):
     returnShape = []
-    for seg in range(0, segCount):
+    for seg in range(0, int(segCount)):
         coordX = wideX * circleX(pi * 2.0 * float(float(seg) / float(segCount)), radius - thickness, centerX, centerY)
         coordY = wideY * circleY(pi * 2.0 * float(float(seg) / float(segCount)), radius - thickness, centerX, centerY)
         returnShape.append((coordX, coordY, 1))
@@ -1154,14 +1154,15 @@ class DistributedTargetGame(DistributedMinigame):
                 self.ticker = 0.0
                 powerDiv = 0.05
                 self.power -= 1.0 + 0.2 * (self.power * powerDiv * (self.power * powerDiv))
-            if timeDiff > 0.5:
-                self.power = self.powerBar['value']
-                self.signalLaunch = 0
-                if self.power > 120:
-                    self.power = 120
-                if self.power < 40:
-                    self.power = 40
-                self.gameFSM.request('fly')
+            if timeDiff:
+                if timeDiff > 0.5:
+                    self.power = self.powerBar['value']
+                    self.signalLaunch = 0
+                    if self.power > 120:
+                        self.power = 120
+                    if self.power < 40:
+                        self.power = 40
+                    self.gameFSM.request('fly')
         self.stretchY = 0.9 * self.stretchY + 0.1 * self.power
         self.stretchX = 0.9 * self.stretchX + 0.1 * self.launchLaterial
         base.localAvatar.setY(self.localStartPos[1] - self.stretchY * 0.12)
