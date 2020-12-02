@@ -1,4 +1,5 @@
 import json
+import base64
 
 from direct.directnotify import DirectNotifyGlobal
 from direct.distributed.DistributedObjectGlobal import DistributedObjectGlobal
@@ -16,7 +17,7 @@ class TTOffFriendsManager(DistributedObjectGlobal):
             if currentField[0] in (
                     'setDNAString', 'setMailboxContents', 'setAwardMailboxContents', 'setGiftSchedule',
                     'setDeliverySchedule', 'setAwardSchedule'):
-                currentField[1] = currentField[1].decode('base64')
+                currentField[1] = base64.b64decode(currentField[1])
 
         base.cr.handleGetAvatarDetailsResp(avId, fields=fields)
 

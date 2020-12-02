@@ -1,6 +1,7 @@
 import functools
 import json
 import time
+import base64
 
 from direct.directnotify import DirectNotifyGlobal
 from direct.distributed.DistributedObjectGlobalUD import DistributedObjectGlobalUD
@@ -274,20 +275,20 @@ class TTOffFriendsManagerUD(DistributedObjectGlobalUD):
         else:
             details = [
                 ['setName', fields['setName'][0]],
-                ['setExperience', fields['setExperience'][0]],
+                ['setExperience', base64.b64encode(fields['setExperience'][0]).decode()],
                 ['setTrackAccess', fields['setTrackAccess'][0]],
                 ['setTrackBonusLevel', fields['setTrackBonusLevel'][0]],
-                ['setInventory', fields['setInventory'][0]],
+                ['setInventory', base64.b64encode(fields['setInventory'][0]).decode()],
                 ['setHp', fields['setHp'][0]],
                 ['setMaxHp', fields['setMaxHp'][0]],
                 ['setDefaultShard', fields['setDefaultShard'][0]],
                 ['setLastHood', fields['setLastHood'][0]],
-                ['setDNAString', fields['setDNAString'][0].encode('base64')],
-                ['setMailboxContents', fields['setMailboxContents'][0].encode('base64')],
-                ['setAwardMailboxContents', fields['setAwardMailboxContents'][0].encode('base64')],
-                ['setGiftSchedule', fields['setGiftSchedule'][0].encode('base64')],
-                ['setDeliverySchedule', fields['setDeliverySchedule'][0].encode('base64')],
-                ['setAwardSchedule', fields['setAwardSchedule'][0].encode('base64')],
+                ['setDNAString', base64.b64encode(fields['setDNAString'][0]).decode()],
+                ['setMailboxContents', base64.b64encode(fields['setMailboxContents'][0]).decode()],
+                ['setAwardMailboxContents', base64.b64encode(fields['setAwardMailboxContents'][0]).decode()],
+                ['setGiftSchedule', base64.b64encode(fields['setGiftSchedule'][0]).decode()],
+                ['setDeliverySchedule', base64.b64encode(fields['setDeliverySchedule'][0]).decode()],
+                ['setAwardSchedule', base64.b64encode(fields['setAwardSchedule'][0]).decode()],
                 ['setHat', fields['setHat'][0], fields['setHat'][1], fields['setHat'][2]],
                 ['setGlasses', fields['setGlasses'][0], fields['setGlasses'][1], fields['setGlasses'][2]],
                 ['setBackpack', fields['setBackpack'][0], fields['setBackpack'][1], fields['setBackpack'][2]],
@@ -302,6 +303,8 @@ class TTOffFriendsManagerUD(DistributedObjectGlobalUD):
                 ['setClothesBottomsList', fields['setClothesBottomsList'][0]],
                 ['setPetTrickPhrases', fields['setPetTrickPhrases'][0]]
             ]
+
+        self.notify.warning(details)
 
         self.sendUpdateToAvatarId(avId, 'avatarDetailsResp', [fields['avId'], json.dumps(details)])
 

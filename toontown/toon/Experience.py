@@ -4,6 +4,7 @@ from direct.directnotify import DirectNotifyGlobal
 from direct.distributed.PyDatagram import PyDatagram
 from direct.distributed.PyDatagramIterator import PyDatagramIterator
 from otp.otpbase import OTPGlobals
+import base64
 
 class Experience:
     notify = DirectNotifyGlobal.directNotify.newCategory('Experience')
@@ -16,6 +17,8 @@ class Experience:
                 self.experience.append(StartingLevel)
 
         else:
+            if type(expStr) == str:
+                expStr = base64.b64decode(expStr.encode())
             self.experience = self.makeFromNetString(expStr)
         return
 

@@ -5,6 +5,7 @@ from direct.showbase import DirectObject
 from direct.directnotify import DirectNotifyGlobal
 from direct.distributed.PyDatagram import PyDatagram
 from direct.distributed.PyDatagramIterator import PyDatagramIterator
+import base64
 
 class InventoryBase(DirectObject.DirectObject):
     notify = DirectNotifyGlobal.directNotify.newCategory('InventoryBase')
@@ -22,6 +23,8 @@ class InventoryBase(DirectObject.DirectObject):
                 self.inventory.append(level)
 
         else:
+            if type(invStr) == str:
+                invStr = base64.b64decode(invStr.encode())
             self.inventory = self.makeFromNetString(invStr)
         self.calcTotalProps()
         return
@@ -57,6 +60,8 @@ class InventoryBase(DirectObject.DirectObject):
 
     def makeFromNetString(self, netString):
         dataList = []
+        if type(netString) == str:
+            netString = base64.b64decode(netString.encode())
         dg = PyDatagram(netString)
         dgi = PyDatagramIterator(dg)
         for track in range(0, len(Tracks)):
