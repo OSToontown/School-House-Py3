@@ -184,11 +184,11 @@ class DistributedCCharBase(DistributedChar.DistributedChar):
             elif len(chatter[category]) <= msg:
                 self.notify.debug("Chatter's changed")
                 return
-            str = chatter[category][msg]
-            if '%' in str:
-                str = copy.deepcopy(str)
+            _str = chatter[category][msg]
+            if '%' in _str:
+                _str = copy.deepcopy(_str)
                 avName = avatar.getName()
-                str = string.replace(str, '%', avName)
+                _str = str.replace(_str, '%', avName)
             track = Sequence()
             if category != CCharChatter.GOODBYE:
                 curHpr = self.getHpr()
@@ -209,7 +209,7 @@ class DistributedCCharBase(DistributedChar.DistributedChar):
             else:
                 chatFlags = CFTimeout | CFSpeech
             self.chatterDialogue = self.getChatterDialogue(category, msg)
-            track.append(Func(self.setChatAbsolute, str, chatFlags, self.chatterDialogue))
+            track.append(Func(self.setChatAbsolute, _str, chatFlags, self.chatterDialogue))
             self.chatTrack.finish()
             self.chatTrack = track
             self.chatTrack.start()
