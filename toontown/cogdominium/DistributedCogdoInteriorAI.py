@@ -1,3 +1,4 @@
+import base64
 import copy
 import random
 from direct.directnotify import DirectNotifyGlobal
@@ -355,7 +356,7 @@ class DistributedCogdoInteriorAI(DistributedObjectAI.DistributedObjectAI):
             self.air.writeServerEvent('suspicious', avId, 'CogdoInteriorAI.setAvatarJoined: avatar not present')
             return
         else:
-            self.savedByMap[avId] = (avatar.getName(), avatar.dna.makeNetString(), avatar.isGM())
+            self.savedByMap[avId] = (avatar.getName(), base64.b64encode(avatar.dna.makeNetString()).decode(), avatar.isGM())
         if avId not in self.responses:
             self.air.writeServerEvent('suspicious', avId, 'CogdoInteriorAI.setAvatarJoined: avId not in responses')
             self.notify.warning('CogdoInteriorAI.setAvatarJoined: avId not in responses')

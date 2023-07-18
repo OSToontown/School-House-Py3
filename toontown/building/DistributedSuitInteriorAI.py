@@ -11,6 +11,7 @@ from toontown.battle import BattleBase
 from direct.task import Timer
 from . import DistributedElevatorIntAI
 import copy
+import base64
 
 class DistributedSuitInteriorAI(DistributedObjectAI.DistributedObjectAI):
 
@@ -189,7 +190,7 @@ class DistributedSuitInteriorAI(DistributedObjectAI.DistributedObjectAI):
             return
         avatar = self.air.doId2do.get(avId)
         if avatar != None:
-            self.savedByMap[avId] = (avatar.getName(), avatar.dna.makeNetString(), avatar.isGM())
+            self.savedByMap[avId] = (avatar.getName(), base64.b64encode(avatar.dna.makeNetString()).decode(), avatar.isGM())
         self.responses[avId] += 1
         if self.__allToonsResponded():
             self.fsm.request('Elevator')

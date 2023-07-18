@@ -8969,6 +8969,7 @@ SummonDlgBldgBadLoc = 'Sorry, there are no Toon buildings nearby for the Cogs to
 SummonDlgInvasionSuccess = "You have successfully summoned the Cogs. It's an invasion!"
 SummonDlgInvasionBusy = 'A %s cannot be found now.  Try again when the Cog invasion is over.'
 SummonDlgInvasionFail = 'Sorry, the Cog invasion has failed.'
+SummonDlgInvasionFailWV = 'Sorry, you can\'t summon a Cog in Welcome Valley.'
 SummonDlgShopkeeper = 'The Shopkeeper '
 PolarPlaceEffect1 = NPCToonNames[3306] + ': Welcome to Polar Place!'
 PolarPlaceEffect2 = NPCToonNames[3306] + ': Try this on for size.'

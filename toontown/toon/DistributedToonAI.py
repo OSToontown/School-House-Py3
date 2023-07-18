@@ -3191,7 +3191,7 @@ class DistributedToonAI(DistributedPlayerAI.DistributedPlayerAI, DistributedSmoo
             self.sendUpdate('cogSummonsResponse', ['fail', suitIndex, 0])
             return
         if ZoneUtil.isWelcomeValley(self.zoneId):
-            self.sendUpdate('cogSummonsResponse', ['fail', suitIndex, 0])
+            self.sendUpdate('cogSummonsResponse', ['failwv', suitIndex, 0])
             return
         returnCode = None
         if type == 'single':

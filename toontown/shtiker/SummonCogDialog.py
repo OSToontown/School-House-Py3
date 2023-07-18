@@ -98,6 +98,8 @@ class SummonCogDialog(DirectFrame, StateData.StateData):
                 self.statusLabel['text'] = TTL.SummonDlgSingleBadLoc
             elif returnCode == 'fail':
                 self.statusLabel['text'] = TTL.SummonDlgInvasionFail
+            elif returnCode == 'failwv':
+                self.statusLabel['text'] = TTL.SummonDlgInvasionFailWV
         elif self.summonsType == 'building':
             if returnCode == 'success':
                 building = base.cr.doId2do.get(buildingId)
@@ -116,6 +118,8 @@ class SummonCogDialog(DirectFrame, StateData.StateData):
                 self.statusLabel['text'] = TTL.SummonDlgBldgBadLoc
             elif returnCode == 'fail':
                 self.statusLabel['text'] = TTL.SummonDlgInvasionFail
+            elif returnCode == 'failwv':
+                self.statusLabel['text'] = TTL.SummonDlgInvasionFailWV
         elif self.summonsType == 'invasion':
             if returnCode == 'success':
                 self.statusLabel['text'] = TTL.SummonDlgInvasionSuccess
@@ -123,6 +127,8 @@ class SummonCogDialog(DirectFrame, StateData.StateData):
                 self.statusLabel['text'] = TTL.SummonDlgInvasionBusy % self.suitFullName
             elif returnCode == 'fail':
                 self.statusLabel['text'] = TTL.SummonDlgInvasionFail
+            elif returnCode == 'failwv':
+                self.statusLabel['text'] = TTL.SummonDlgInvasionFailWV
 
     def hideSummonButtons(self):
         self.summonSingleButton.hide()
