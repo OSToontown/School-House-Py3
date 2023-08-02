@@ -2289,7 +2289,7 @@ class SerialMaskedGen(SerialNumGen):
         self._mask = mask
         SerialNumGen.__init__(self, start)
     def __next__(self):
-        v = SerialNumGen.next(self)
+        v = SerialNumGen.__next__(self)
         return v & self._mask
 
 _serialGen = SerialNumGen()

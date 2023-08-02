@@ -16,8 +16,8 @@ class GameSprite:
         self.foundation = foundation
         self.velX = 0
         self.velZ = 0
-        self.prevX = 0
-        self.prevZ = 0
+        self.prevX = 0.0
+        self.prevZ = 0.0
         self.isActive = 1
         self.size = 0.04
         self.isQue = 0

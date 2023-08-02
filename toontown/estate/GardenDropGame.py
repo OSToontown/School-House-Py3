@@ -350,6 +350,8 @@ class GardenDropGame(DirectObject.DirectObject):
         if self.lastTime == None:
             self.lastTime = globalClock.getRealTime()
         timeDelta = globalClock.getRealTime() - self.lastTime
+        if timeDelta == 0.0:
+            timeDelta += 0.0001
         self.lastTime = globalClock.getRealTime()
         self.newBallCountUp += timeDelta
         if base.mouseWatcherNode.hasMouse():
